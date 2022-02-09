@@ -7,7 +7,7 @@ public class Main {
 
       
     public static void main(String[] args){
-          //Data types (declared but not initialized)
+          //Data types (declared but not initialized) null by default
           int x;
           double y;
           float z;
