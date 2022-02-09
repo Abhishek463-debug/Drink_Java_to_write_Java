@@ -1,0 +1,51 @@
+//important packages
+import java.io.*;
+import java.util.*;
+import java.util.concurrent.atomic.*;
+
+public class Main {
+
+      
+    public static void main(String[] args){
+          //Data types (declared but not initialized)
+          int x;
+          double y;
+          float z;
+          String s;
+         
+         //init
+         int a = 10;
+         double b = 9.43;
+         float f = 10.45f;
+         String name = "Abhishek";
+         char gender = 'M';
+         
+        //access modifiers: public, protected, default, private (public -> global, protected -> Limited to subclasses in other packages, default -> class and same package,
+                                                                // private -> only same class)
+        private int t = 5;
+        protected int pt = 10;
+        public int ptt = 100; 
+        
+        System.out.println(10+10); //o/p = 20
+        System.out.println(10+5+ "I love pizza!"); //o/p => 15I love pizza!
+        System.out.println(10+5+5 + "pizza" + 10 + 10); // 20pizza1010
+        
+        Scanner scan = new Scanner(System.in);
+        String a = scan.next(); //scans until next whitespace
+        int g = scan.nextInt(); //scans first number, change nextInt to next*Type* for different types
+        String whole_sentence = scan.nextLine(); //scans entire line (use split() to create tokens)
+        scan.close(); //good practice
+        
+        
+        int k = 10;
+        int l = 10;
+        String v = "Phone";
+        String u = "Phone";
+        String x = new String("Phone");
+        
+        System.out.println(k==l + " " + v == u + " " + u == x + " " + u.equals(x)); //primitives return true, reference data types check memory location
+                                                                                    //v and u are same place in string pool, but v,u are not in same place as x, but 
+                                                                                    // the inner values are equal
+        //o/p: true true false true
+        
+        }}
