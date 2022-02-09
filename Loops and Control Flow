@@ -1,0 +1,44 @@
+import java.io.*;
+import java.util.*;
+import java.util.concurrency.atomic.*;
+
+
+public class Main {
+      public static void main (String[] words){
+            
+            
+            
+            int age = 20;
+            
+            //if conditionals
+            
+            if(age==20) System.out.println("You are 20 years old!");
+            else System.out.println("You are not 20 years old");
+            
+            boolean infinite = true;
+            while(infinite){
+              //do something
+              if(something happens) infinite = false;
+              
+              }
+              
+            if(infinite) {//do something;}
+            for(int i =0; i <max_value; i++) { //this is iterative logic based on indexes }
+            for(class_type i: container) { //for-each loop}
+            
+            //Control flow statements:
+              //1) continue: continues the function
+              //2) break: "break" out of loop 
+              
+             // e.g.
+              while(infinite){
+                if(something happens(some condition like a==b or a!=b or etc)) break;
+                else //do something;
+                }
+                
+               //3) return: end the function and return the final output
+               
+               }}
+            
+            
+            
