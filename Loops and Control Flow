@@ -1,6 +1,6 @@
 import java.io.*;
 import java.util.*;
-import java.util.concurrency.atomic.*;
+import java.util.concurrent.atomic.*;
 
 
 public class Main {
