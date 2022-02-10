@@ -1,0 +1,249 @@
+import java.util.*;
+
+public class Sorting {
+    public static void bubble_sort(int[] arr){
+        //in-place , time (O(n*n)) complexity
+        //optimized to have worst case operations = n*(n+1)/2
+
+        for(int i= 0; i < arr.length-1; i++){
+            boolean swapped = false;
+            for(int j=0; j < arr.length-1-i;j++){
+                if(arr[j] > arr[j+1]){
+                    int temp = arr[j+1];
+                    arr[j+1] = arr[j];
+                    arr[j] = temp;
+                    swapped = true;
+                }
+            
+            }
+            if(!swapped)break;
+        }
+    }
+
+    public static void selection_sort(int[] arr){
+
+        //in-place (O(1) space complexity), O(n*n) time complexity
+        for(int i = 0; i < arr.length-1; i++){
+            int min_idx = i;
+            for(int j = i; j < arr.length; j++){
+                if (arr[j] < arr[min_idx]) min_idx = j;
+            }
+            if(min_idx!=i){
+                int temp = arr[min_idx];
+                arr[min_idx] = arr[i];
+                arr[i] = temp;
+            }
+        }
+    }
+    
+    public static void insertion_sort(int[] arr){
+
+        for(int i=1; i < arr.length; i++){
+            int anchor = arr[i];
+            int j = i-1;
+            while(j>=0 && arr[j] > anchor){
+                arr[j+1] = arr[j];
+                j-=1;
+            }
+            arr[j+1] = anchor;
+        }
+
+
+
+
+    }
+    public static void shell_sort(int[] arr){
+        int gap = arr.length/2;
+        while(gap>0){
+            for(int i = gap; i < arr.length; i+= gap){
+                int anchor = arr[gap];
+                int j = i;
+                while(j>=gap && arr[j-gap] > anchor){
+                    arr[j] = arr[j-gap];
+                    j-=gap;
+                }
+                arr[j] = anchor;
+            }
+            gap/=2;
+        }
+    }
+    public static void merge_sort(int[] arr){
+
+        //Time -> O(nlogn) complexity
+        if(arr.length == 1) return;
+        int mid = arr.length/2;
+        int[] left = new int[mid];
+        int[] right = new int[arr.length-mid];
+        for(int i = 0; i < mid; i++){
+            left[i] = arr[i];
+        }
+        for(int i = 0; i < right.length; i++){
+            right[i] = arr[mid+i];
+        }
+        merge_sort(left);
+        merge_sort(right);
+        merge_sorted_lists(left, right, arr);
+
+    }
+    public static void merge_sorted_lists(int[] left, int[] right, int[] arr){
+        int i =0, j=0, k=0;
+
+        while(i<left.length && j < right.length){
+            if(left[i] <= right[j]){
+                arr[k] = left[i];
+                i++;
+            }
+            else{
+                arr[k] = right[j];
+                j++;
+            }
+            k++;
+        }
+        while(i < left.length){
+            arr[k] = left[i];
+            i++;
+            k++;
+        }
+        while(j < right.length){
+            arr[k] = right[j];
+            j++;
+            k++;
+        }
+    }
+
+    public static void quicksort(int start, int end, int[] arr){
+        if(arr.length==1) return;
+        if(start<end){
+            int partition_idx = hoare_partition(start, end, arr);
+            quicksort(start, partition_idx-1, arr);
+            quicksort(partition_idx+1, end, arr);
+
+        }
+    }
+    public static void quicksort_for_lomuto(int start, int end, int[] arr){
+        if(arr.length==1) return;
+        if(start<end){
+            int partition_idx = lomuto_partition(start, end, arr);
+            quicksort(start, partition_idx-1, arr);
+            quicksort(partition_idx+1, end, arr);
+
+        }
+    }
+    public static int hoare_partition(int start, int end, int[] arr){
+        int pivot_idx = start;
+        int pivot = arr[pivot_idx];
+        while(start<end){
+            while(start<arr.length && arr[start] <= pivot)start++;
+            while(arr[end] > pivot)end--;
+            if (start < end){
+                int temp = arr[start];
+                arr[start] = arr[end];
+                arr[end] = temp;
+            }
+        }
+        int temp = arr[pivot_idx];
+        arr[pivot_idx] = arr[end];
+        arr[end] = temp;
+        return end;
+
+    }
+    public static int lomuto_partition(int start, int end, int[] elements){
+        int pivot = elements[end];
+        int p_idx = start;
+        for(int i= start; i < end; i++){
+            if(elements[i] <= pivot){
+                int temp = elements[i];
+                elements[i] = elements[p_idx];
+                elements[p_idx] = temp;
+                p_idx++;
+            }
+
+        }
+        int temp = elements[p_idx];
+        elements[p_idx] = elements[end];
+        elements[end] = temp;
+        return p_idx;
+    }
+
+    public static void main(String[] args){
+        Random random = new Random();
+        int[] arr = new int[100];
+
+
+        //Bubble sorting
+        for(int i=0; i < arr.length; i++){
+            arr[i] = random.nextInt(100);
+        }
+        System.out.println(Arrays.toString(arr));
+
+        bubble_sort(arr);
+        
+        System.out.println(Arrays.toString(arr));
+
+
+        //Selection sort
+        int[] selection_arr = new int[20];
+        for(int i=0; i < selection_arr.length; i++){
+            selection_arr[i] = random.nextInt(100);
+        }
+        System.out.println(Arrays.toString(selection_arr));
+
+        selection_sort(selection_arr);
+        System.out.println(Arrays.toString(selection_arr));
+
+        //Insertion sort
+        int[] insertarr = new int[25];
+        for(int i=0; i < insertarr.length; i++){
+            insertarr[i] = random.nextInt(1000);
+        }
+        System.out.println(Arrays.toString(insertarr));
+        insertion_sort(insertarr);
+        System.out.println(Arrays.toString(insertarr));
+
+        //Shell sort
+        int[] shellcheck = new int[15];
+        for(int i = 0; i < shellcheck.length; i++){
+            shellcheck[i] = random.nextInt(10000);
+        }
+        System.out.println(Arrays.toString(shellcheck));
+        selection_sort(shellcheck);
+        System.out.println(Arrays.toString(shellcheck));
+
+
+        //Merge sort
+        int[] mergearr = new int[10];
+        for(int i = 0; i < mergearr.length; i++){
+            mergearr[i] = random.nextInt(1000);
+        }
+        System.out.println(Arrays.toString(mergearr));
+        merge_sort(mergearr);
+        System.out.println(Arrays.toString(mergearr));
+
+        //Quick sort using Hoare Partition and Lomuto Partition
+
+        //HOARE PARTITION
+        int[] quickarr = new int[10];
+        for(int i=0; i < quickarr.length; i++){
+            quickarr[i] = random.nextInt(2000);
+        }
+        System.out.println(Arrays.toString(quickarr));
+        
+        quicksort(0, quickarr.length-1, quickarr);
+        System.out.println(Arrays.toString(quickarr));
+
+        //Lomuto Partition
+
+        int[] quickarrlomuto = new int[10];
+        for(int i=0; i < quickarrlomuto.length; i++)
+        {
+            quickarrlomuto[i] = random.nextInt(100);
+        }
+        System.out.println(Arrays.toString(quickarrlomuto));
+
+        quicksort_for_lomuto(0, quickarrlomuto.length - 1, quickarrlomuto);
+        System.out.println(Arrays.toString(quickarrlomuto));
+
+
+        
+    }
+}
