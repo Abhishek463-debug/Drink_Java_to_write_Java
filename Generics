@@ -1,0 +1,41 @@
+public class Generics { //Please note : Generics are only for reference data types (not primitives like int, short, long, float, boolean, etc)
+
+    public static <T> void iterate(T[] arr){
+        for(T t: arr) System.out.print(t + " ");
+        System.out.println();
+    }
+
+    public static <T> T return_something(T[] arr){
+        return arr[0];
+    }
+    public static <T> int length(T[] arr){
+        return arr.length;
+    }
+
+    public static void main(String[] args){
+
+
+        Integer[] arr = {1,2,3};
+        Double[] arr1 = {1.3, 8.9, 5.23};
+        String[] arr2 = {"Jack", "Ryan", "Tim"};
+
+        iterate(arr);
+        iterate(arr2);
+        iterate(arr1);
+
+        System.out.println(return_something(arr));
+        System.out.println(return_something(arr1));
+        System.out.println(return_something(arr2));
+
+        System.out.println(length(arr));
+        System.out.println(length(arr1));
+        System.out.println(length(arr2));
+
+
+    }
+    
+
+
+
+
+}
