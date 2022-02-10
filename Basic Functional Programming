@@ -1,0 +1,30 @@
+import java.util.*;
+import java.io.*;
+
+
+
+Lambda functions can define an interface's abstract function or provide a function without an actual definition.
+How to represent:
+  0 Parameters: () -> {...}
+  1 Parameter: (p) or p -> {...}
+  2 or More Parameters: (p1, p2, p3... pn) -> {...}
+/* Basic Functional Programming has 3-4 most important methods: collectionstream.filter(lambda function or normal func), collectionstream.map(func), 
+    collectionstream.reduce(initial_value, func), collectionstream.forEach(lambda func) */
+
+public class FunctionalProgram {
+
+    public static void main(String[] args){
+
+        ArrayList<Integer> list = new ArrayList<>();
+
+        for(int i=0; i < 100; i++)list.add(i);
+        
+        //list must be collection to stream/parallelStream
+        System.out.println(list.stream().filter(x-> x>0 && x<98 && x%3==1).map(x->x*x*x).reduce(1,(x,y) -> x+y)); //faster for smaller datasets
+
+        list.parallelStream().filter(x-> x>0 && x<98 && x%3==1).map(x->x*x*x).forEach(x-> System.out.print(x+ " ")); //parallel used in concurrency
+
+
+    }
+    
+}
