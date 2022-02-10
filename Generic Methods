@@ -1,3 +1,30 @@
+import java.util.*;
+
+class GenericClass<T>{
+    T item;
+
+    GenericClass(T item){
+        this.item = item;
+    }
+
+    void set(T change_item){
+        this.item = change_item;
+    }
+
+    T get(){
+        return this.item;
+    }
+    }
+
+    //how to initialize
+    /* Generic<DataType> g = new Generic<>(); */
+
+    //example: Generic<Integer> g = new Generic<>(5);
+
+
+
+
+
 public class GenericMethods { //Please note : Generics are only for reference data types (not primitives like int, short, long, float, boolean, etc)
 
     public static <T> void iterate(T[] arr){
