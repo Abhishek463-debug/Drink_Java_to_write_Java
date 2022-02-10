@@ -1,0 +1,30 @@
+
+import java.util.*;
+
+public class Game {
+    public static void main(String[] games){
+
+        Random random = new Random();
+        int number = random.nextInt(10) + 1;
+        System.out.println(number);
+
+
+        Scanner scan = new Scanner(System.in);
+        int user_guess = 0;
+        int counter = 0;
+        while(user_guess != number && counter < 3){
+
+            user_guess = scan.nextInt();
+            if(user_guess == number) { System.out.println("You guessed the correct number!"); break; }
+            else if(user_guess < number) System.out.println("You guessed too low!");
+            else System.out.println("You guessed too high!");
+            counter++;
+
+        }
+        System.out.println("You're out of guesses! You guessed " + counter + " times");
+        scan.close();
+
+        
+    }
+    
+}
