@@ -37,6 +37,8 @@ public class Stacks {
         System.out.println(stack.search("World of Warcraft")); //expect 3
 
         System.out.println(stack.search("Basketball")); //expect -1
+        
+        //can run out of memory (use for loop and try inserting like 2 billion elements)
 
 
     }
