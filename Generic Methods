@@ -1,4 +1,4 @@
-public class Generics { //Please note : Generics are only for reference data types (not primitives like int, short, long, float, boolean, etc)
+public class GenericMethods { //Please note : Generics are only for reference data types (not primitives like int, short, long, float, boolean, etc)
 
     public static <T> void iterate(T[] arr){
         for(T t: arr) System.out.print(t + " ");
