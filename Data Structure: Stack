@@ -1,0 +1,43 @@
+import java.util.*;
+
+
+public class Stacks {
+    public static void main(String[] args){
+
+
+        Stack<String> stack =  new Stack<>();
+        //empty methods (if empty -> true, else false)
+        System.out.println(stack.empty()); //expect true
+
+
+        //push to *push to top of stack*
+        stack.push("Minecraft");
+        stack.push("World of Warcraft");
+        stack.push("Call of Duty");
+        stack.push("Runescape 3");
+        stack.push("League of Legends");
+
+
+        System.out.println(stack.empty()); //expect false
+
+        //peek peeks, but doesn't change the stack
+        System.out.println(stack);
+
+        System.out.println(stack.peek()); //expect League of Legends
+
+        System.out.println(stack);
+
+        //pop removes top element, returned when function called
+
+        System.out.println(stack.pop()); //League of Legends
+
+        System.out.println(stack);
+
+        //search (-1 is not found, else position from top starting from 1)
+        System.out.println(stack.search("World of Warcraft")); //expect 3
+
+        System.out.println(stack.search("Basketball")); //expect -1
+
+
+    }
+}
