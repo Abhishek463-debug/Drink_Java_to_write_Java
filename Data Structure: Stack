@@ -39,6 +39,8 @@ public class Stacks {
         System.out.println(stack.search("Basketball")); //expect -1
         
         //can run out of memory (use for loop and try inserting like 2 billion elements)
+        
+        //Used in undo/redo features, browser history, backtracking algos like depth-first search, in place of recursion where limit is 7k in Java
 
 
     }
