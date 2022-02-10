@@ -20,8 +20,26 @@ class GenericClass<T>{
     /* Generic<DataType> g = new Generic<>(); */
 
     //example: Generic<Integer> g = new Generic<>(5);
+    ////Containers like ArrayList, Vectors, PriorityQueues, etc are Generic classes! (But T must  BE REFERENCE DATA TYPES!)
 
 
+class MoreThanOneGeneric<T, U, V> {
+
+        T item1;
+        U item2;
+        V item3;
+       
+       MoreThanOneGeneric(T item1, U item2, V item3){
+            this.item1 = item1;
+            this.item2 = item2;
+            this.item3 = item3;
+            }
+         //write more methods with these types denoted as T, U, V
+         
+         T get() {} 
+         U get () {}
+         V get () {} //getters only return one data type (unless we use toString(), convert to one single string and return that, in which case, return type is String.
+              }
 
 
 
@@ -37,6 +55,13 @@ public class GenericMethods { //Please note : Generics are only for reference da
     }
     public static <T> int length(T[] arr){
         return arr.length;
+    }
+    
+    public static <T, U> void iterate(T[] arr, U[] arr1){ //overloaded for more than one generic type
+        for(T t: arr) System.out.print(t + " ");
+        System.out.println();
+        for(U u: arr1) System.out.print(u + " ");
+        System.out.println();
     }
 
     public static void main(String[] args){
@@ -57,6 +82,9 @@ public class GenericMethods { //Please note : Generics are only for reference da
         System.out.println(length(arr));
         System.out.println(length(arr1));
         System.out.println(length(arr2));
+        
+        
+        iterate(arr, arr2);
 
 
     }
