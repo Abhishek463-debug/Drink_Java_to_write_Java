@@ -1,0 +1,23 @@
+public class TypeCasting {
+    
+
+    public static void main(String[] args){
+
+        int a = 10, b =15;
+       // String a1 = (String) a;
+      // a = (Integer) a;
+
+        System.out.println((Integer)a + b);
+        System.out.println((double) a + (double) b);
+        //
+        //String d = Integer.toString(a);
+
+        System.out.println( Integer.toString(a) + (double) b);
+    }
+}
+
+
+////output:
+  // 25
+  //25.0
+  //1015.0
