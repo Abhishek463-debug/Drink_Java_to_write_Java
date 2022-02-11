@@ -13,6 +13,12 @@ public class TypeCasting {
         //String d = Integer.toString(a);
 
         System.out.println( Integer.toString(a) + (double) b);
+        
+        Object c = 10, d  =15;
+      
+        
+      System.out.println((String) c + d);
+      
     }
 }
 
