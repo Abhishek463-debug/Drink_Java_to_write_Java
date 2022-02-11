@@ -21,7 +21,9 @@ public class Main {
          char gender = 'M';
          
         //access modifiers: public, protected, default, private (public -> global, protected -> Limited to subclasses in other packages, default -> class and same package,
-                                                                // private -> only same class)
+                                                                // private -> only same class) ....used in monitoring user's freedom and privacy
+                                                               
+        
         private int t = 5;
         protected int pt = 10;
         public int ptt = 100; 
