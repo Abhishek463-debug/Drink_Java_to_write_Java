@@ -21,7 +21,7 @@ public class Game {
             counter++;
 
         }
-        System.out.println("You're out of guesses! You guessed " + counter + " times");
+        if(counter>=3) System.out.println("You're out of guesses! You guessed " + counter + " times");
         scan.close();
 
         
