@@ -6,8 +6,8 @@ import java.io.*;
 Lambda functions can define an interface's abstract function or provide a function without an actual definition.
 How to represent:
   0 Parameters: () -> {...}
-  1 Parameter: (p) or p -> {...}
-  2 or More Parameters: (p1, p2, p3... pn) -> {...}
+  1 Parameter: (p) or p or (type p)-> {...}
+  2 or More Parameters: (p1, p2, p3... pn) or (type p1, type p2, type p3....type pn) -> {...}
 /* Basic Functional Programming has 3-4 most important methods: collectionstream.filter(lambda function or normal func), collectionstream.map(func), 
     collectionstream.reduce(initial_value, func), collectionstream.forEach(lambda func) */
     
