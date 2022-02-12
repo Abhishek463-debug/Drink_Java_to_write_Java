@@ -1,0 +1,39 @@
+import java.util.*;
+
+
+
+class Person{
+  int age;
+  double weight;
+  }
+public class Arrays{
+    
+    public static void main(String[] args){
+    
+        //Ways to initialize arrays (for ints)
+        
+        int[] arr = {1,2,3};
+        
+        //works for reference data types too
+        
+        String[] str = {"Movies" , "Songs", "Videos"};
+        
+        //or
+        
+        
+        Scanner scan = new Scanner(System.in);
+        
+        int n = scan.nextInt();
+        
+        //(Length initialized to user input
+        int[] arr1 = new int[n]; (initialized to all 0s at each index) (all primitives initialized to 0, 0.0, ' ')
+        
+        String[] str2 = new String[n]; (all values initialized to nulls) (All reference data types (Strings, Collections, Custom Classes) set to null)
+        Person[] parr = new Person[n]; (nulls) (even if all attributes are primitive)
+        }
+        
+        }
+        
+        
+        
+        
