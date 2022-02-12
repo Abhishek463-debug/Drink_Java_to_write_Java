@@ -4,8 +4,8 @@ public class TypeCasting {
     public static void main(String[] args){
 
         int a = 10, b =15;
-       // String a1 = (String) a;
-      // a = (Integer) a;
+       // String a1 = (String) a; (Doesn't work, that's why it is commented)
+      // a = (Integer) a; (This however does work!)
 
         System.out.println((Integer)a + b);
         System.out.println((double) a + (double) b);
