@@ -11,7 +11,7 @@ How to represent:
 /* Basic Functional Programming has 3-4 most important methods: collectionstream.filter(lambda function or normal func), collectionstream.map(func), 
     collectionstream.reduce(initial_value, func), collectionstream.forEach(lambda func) */
     
- @FunctionalInterface //good practice
+ @FunctionalInterface //good practice, IF INTERFACE HAS MORE THAN ONE ABSTRACT FUNCTION, COMPILE TIME ERROR WILL HAPPEN
 interface LambdaTest {
     void abstractfunc(int x);
     }
