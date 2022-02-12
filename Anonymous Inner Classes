@@ -1,0 +1,43 @@
+//anonymous inner classes can only be used once as they don't actually have a class to instantiate from. (They're always subclasses or implementations of interfaces)
+
+
+class Animal {
+    int age;
+    double weight;
+    String name;
+
+    Animal(int age, double weight, String name){
+        this.age = age;
+        this.weight = weight;
+        this.name = name;
+    }
+    public void walk()  {System.out.println("It is walking"); }
+
+    public void eat(){ System.out.println("It eats");}
+
+}
+
+
+
+public class AnonymousInnerClasses {
+
+    public static void main(String[] args) {
+    
+
+    Animal rare_animal = new Animal(10, 40.97, "Unknown") {
+        @Override
+        public void walk() {
+            System.out.println("It hops!");
+        }
+        @Override
+        public void eat(){
+            System.out.println("It eats only meat!");
+        }
+
+    };
+
+    rare_animal.eat();
+    rare_animal.walk();
+
+}
+}
