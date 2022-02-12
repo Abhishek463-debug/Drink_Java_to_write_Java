@@ -10,6 +10,11 @@ How to represent:
   2 or More Parameters: (p1, p2, p3... pn) -> {...}
 /* Basic Functional Programming has 3-4 most important methods: collectionstream.filter(lambda function or normal func), collectionstream.map(func), 
     collectionstream.reduce(initial_value, func), collectionstream.forEach(lambda func) */
+    
+    
+interface LambdaTest {
+    void abstractfunc(int x);
+    }
 
 public class FunctionalProgram {
 
@@ -23,6 +28,17 @@ public class FunctionalProgram {
         System.out.println(list.stream().filter(x-> x>0 && x<98 && x%3==1).map(x->x*x*x).reduce(1,(x,y) -> x+y)); //faster for smaller datasets
 
         list.parallelStream().filter(x-> x>0 && x<98 && x%3==1).map(x->x*x*x).forEach(x-> System.out.print(x+ " ")); //parallel used in concurrency
+        
+        
+        LambdaTest func_object = (int x) -> System.out.println(x+1); // we can specify int or leave it out since it is defined in the interface function.
+
+        func_object.abstractfunc(10); //11
+        
+        LambdaTest func_object = x -> System.out.println(x+1); //same result
+        
+        func_object2.abstractfunc(10); //11
+        
+        
 
 
     }
