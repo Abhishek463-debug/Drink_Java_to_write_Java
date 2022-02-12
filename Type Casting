@@ -28,3 +28,8 @@ public class TypeCasting {
   //25.0
   //1015.0
   //1015.0
+
+
+//Rules: The type to be casted must be a super or sub class of the previous type.
+         Subclass -> Superclass is implicit (A double is an int, but an int is not a double). So changing from double to int is implicitly done.
+         Superclass -> Subclass is explicit (An int is not a double) -> Changing required explicit casting ... int a = 10; double b = (double) a;
