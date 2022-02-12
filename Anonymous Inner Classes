@@ -1,6 +1,5 @@
 //anonymous inner classes can only be used once as they don't actually have a class to instantiate from. (They're always subclasses or implementations of interfaces)
 //useful when we only need one object to implement/extend interface/class.
-
 class Animal {
     int age;
     double weight;
@@ -15,8 +14,14 @@ class Animal {
 
     public void eat(){ System.out.println("It eats");}
 
-}
+    public void sleep() {System.out.println("It sleeps as long as humans!");}
 
+}
+interface AnimalInterface{
+    void walk();
+    void eat();
+    void sleep();
+}
 
 
 public class AnonymousInnerClasses {
@@ -33,11 +38,39 @@ public class AnonymousInnerClasses {
         public void eat(){
             System.out.println("It eats only meat!");
         }
+        
+        //the sleep method is not overridden
+        //DISADVANTAGE: We cannot add attributes since that won't match the format of the super/parent class.
+
+
 
     };
 
     rare_animal.eat();
     rare_animal.walk();
+    rare_animal.sleep();
+
+    AnimalInterface rare_animal2 = new AnimalInterface() {
+        @Override
+        public void walk() {
+            System.out.println("It hops!");
+        }
+        @Override
+        public void eat(){
+            System.out.println("It eats only meat!");
+        }
+        @Override
+        public void sleep() {
+            System.out.println("It sleeps as long as humans, but a bit longer!");
+        }
+        //all methods must be implemented since super/parent class is an interface.
+        //DISADVANTAGE: We cannot add attributes since that won't match the format of the super/parent interface. This child will not have any attributes either!
+
+    };
+
+    rare_animal2.eat();
+    rare_animal2.sleep();
+    rare_animal2.walk();
 
 }
 }
