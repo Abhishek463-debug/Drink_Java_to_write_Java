@@ -1,0 +1,79 @@
+
+
+import java.util.*;
+public class Queues {
+    
+
+    public static void main(String[] args){
+
+        //Queue<String> q = new Queue<>(); doesn't work because Queue is not a class, it is an interface
+
+
+
+        //Collection vs Queue methods: add(e) -> offer(e), remove() -> poll(), element() -> peek() [poll removes first element in queue, peek looks at the first element]
+        Queue<String> q = new LinkedList<>(); //LinkedList is Doubly Linked List by default in collections framework
+
+        //Imagine a fast-food chain where people are ordering food, the fast-food chain uses a queue in the application to place orders
+
+        //Placing orders
+        q.offer("Burgers");
+        q.offer("Pizza");
+        q.offer("Tacos");
+        q.offer("Burritos");
+        q.offer("Cake");
+
+        System.out.println(q + "\n");
+
+        //using peek at queue
+        System.out.println("The first item that should be made is: " + q.peek());
+
+        //q didn't get dequeued yet
+        System.out.println("The queue of orders is: " + q + "\n");
+
+        //using poll (removing first element after order is ready)
+
+        System.out.println("Your food is ready! You chose to buy: " + q.poll());
+        System.out.println("The rest of the queue left is: " + q +"\n");
+
+        //using poll to remove more items because they're ready
+        System.out.println("Your food is ready! You chose to buy: " + q.poll());
+        System.out.println("Your food is ready! You chose to buy: " + q.poll());
+        System.out.println("The rest of the queue left is: " + q +"\n");
+
+
+        //when customer bought more than one item
+        System.out.println("Your food is ready! You chose to buy: " + q.poll() + " and " + q.poll());
+        System.out.println("The rest of the queue left is: " + q +"\n");
+
+        //poll and peek don't throw error, but remove() and element() do
+        System.out.println(q.poll() + " and " + q.peek()); // they return null instead
+
+        //Other useful methods (coming from collections class)
+
+        //isEmpty() (false if not empty, else if empty true)
+        System.out.println("The queue is empty: " + q.isEmpty());
+        q.offer("Tomato soup");
+        System.out.println("The queue is empty: " + q.isEmpty() + "\n");
+
+
+        //size() function for queues from collections
+        System.out.println("There are " + q.size() + " foods in the queue.");
+
+        //contains(element) (obviously case sensitive)
+
+        System.out.println("The queue contains tomato soup: " + q.contains("Tomato soup"));
+
+        System.out.println("The queue contains pizza: " + q.contains("Pizza"));
+
+       
+        //Uses: Breadth first search in graphs for shortest path (useful in Flight Routes)
+        //Printer jobs
+        //First-come first-serve applications in fast food restaurants
+
+
+
+
+
+
+    }
+}
