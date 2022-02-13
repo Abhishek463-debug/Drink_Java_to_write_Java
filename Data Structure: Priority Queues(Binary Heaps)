@@ -1,0 +1,85 @@
+
+import java.util.*;
+//import java.util.stream.Collectors;
+
+public class PriorityQueues {
+
+    public static void main(String[] args){
+
+
+
+        //PriorityQueue<Integer> second_max = new PriorityQueue(Comparator.naturalOrder().reversed()); (Another way to change the priority from min to max)
+
+        //Imagine an app that tells teachers/employers which of their students/employees need training with Priority based on their gpas
+
+        //Can also work for grades (prioritizes based on alphabetical order of strings/characters)
+
+
+
+        //by default the priority queue prioritizes minimum values (also called a binary min heap)
+        PriorityQueue<Double> min_gpa = new PriorityQueue<>();
+
+        min_gpa.offer(2.0);
+        min_gpa.offer(2.3);
+
+        min_gpa.offer(1.7);
+        min_gpa.offer(4.0);
+        min_gpa.offer(3.6);
+
+        //Using Collections.reverseOrder() as the comparator, the maximum values are prioritized
+
+        PriorityQueue<Double> max_gpa = new PriorityQueue<>(Collections.reverseOrder());
+
+        max_gpa.addAll(min_gpa);
+
+        System.out.println(min_gpa);
+
+        System.out.println(max_gpa);
+
+        System.out.println(max_gpa.peek());//highest priority in the priorityqueue/heap
+
+        System.out.println(max_gpa.comparator()); //reverseComparator
+
+        System.out.println(min_gpa.comparator()); //null, since natural order
+
+
+        System.out.println(min_gpa.remove());
+
+        System.out.println(max_gpa.remove(1.7));
+
+        System.out.println(min_gpa.removeIf(x-> x-4.0==0)); // there is also removeAll(Collection <?> c), if filter doesn't remove anything
+                                                            //false is returned, else true is returned
+
+        System.out.println(max_gpa.containsAll(min_gpa)); //if max_gpa contains everything from min_gpa.... there is also max_gpa.contains(Object o) (pq.contains(O))
+
+        System.out.println(max_gpa + " " + min_gpa);
+
+        while(!min_gpa.isEmpty()) System.out.println(min_gpa.poll());
+
+        while(!max_gpa.isEmpty()) System.out.println(max_gpa.poll());
+
+        System.out.println(max_gpa.peek() + " " + max_gpa.poll() + " "); //return null if nothing is available
+
+        //System.out.println(max_gpa.element() + " " + max_gpa.remove()); //these raise errors
+
+        
+
+        PriorityQueue<Character> pq = new PriorityQueue<>(Collections.reverseOrder());
+
+        pq.offer('A');
+        pq.offer('D');
+        pq.offer('F');
+        pq.offer('C');
+        pq.offer('B');
+
+        System.out.println(pq);
+
+        PriorityQueue<Character> newpq = new PriorityQueue<>();
+
+        newpq.addAll(pq);
+
+        System.out.println(newpq);
+
+    }
+    
+}
