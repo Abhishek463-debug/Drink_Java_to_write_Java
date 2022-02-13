@@ -1,0 +1,64 @@
+
+
+import java.util.*;
+public class DoublyLinkedLists {
+
+    public static void main(String[] args){
+
+        //acts as stack
+        LinkedList<String> ll = new LinkedList<>();
+
+        ll.push("A");
+        System.out.println(ll);
+
+        ll.push("B");
+        ll.push("C");
+        ll.push("D");
+        ll.push("F");
+
+        System.out.println(ll);
+
+        //acts as queue
+        LinkedList<String> ll1 = new LinkedList<>();
+        ll1.offer("A");
+        System.out.println(ll1);
+        ll1.offer("B");
+        ll1.offer("C");
+        ll1.offer("D");
+        ll1.offer("F");
+
+        System.out.println(ll1);
+
+        LinkedList<Integer> one = new LinkedList<>();
+        one.add(1);
+        LinkedList<Integer> two = (LinkedList)one.clone();
+
+        System.out.println(one);
+        System.out.println(two);
+        two.add(2);
+        System.out.println(one);
+
+        System.out.println(two);
+
+
+        //Important methods:
+
+        //Insertion: add(e), addAll(int idx, Collection<?> c), addAll(Collection<?> c) (at end of list), addFirst(), offerFirst()
+
+        //Deletion: clear(), remove(), remove(int idx), removeFirst(), removeLast(), poll(), pollFirst(), pollLast(), removeFirstOccurence(), removeLastOccurence(), pop() 
+
+        //Searching: contains(e), get(e)
+
+        //Changing: set(int idx, element e)
+
+        //Others: clone(), descendingIterator(), listIterator(int idx), indexOf(e), lastIndexOf(e), size()
+
+        //All stack/queue methods work (deque methods are stack/queue methods with First/Last at the end of the function name)
+                
+
+        //INSERTION/DELETION : O(1), Searching with/without index: O(n), Uses: BFS/DFS for GPS navigation, Stacks/Queues implementation
+
+
+    }
+    
+}
