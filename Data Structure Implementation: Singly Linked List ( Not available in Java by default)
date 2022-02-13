@@ -1,0 +1,144 @@
+class Node{
+    protected int val;
+    protected Node next;
+
+    Node(int val, Node next){
+        this.val = val;
+        this.next = next;
+    }
+}
+
+class SLL {
+    private Node head;
+
+    SLL(){
+        this.head = null;
+    }
+
+
+    int length(){
+        int length = 0;
+        Node dummy = this.head;
+
+        while(dummy!=null){
+            dummy = dummy.next;
+            length++;
+        }
+        return length;
+    }
+
+    void insert_begin(int val){
+        Node node = new Node(val, this.head);
+        this.head = node;
+    }
+
+    void insert_end(int val){
+        Node dummy = this.head;
+
+        while(dummy.next != null){
+            dummy = dummy.next;
+        }
+        Node node = new Node(val, null);
+        dummy.next = node;
+    }
+
+    void insert_middle(int val, int idx){
+        
+        if(idx == 0) { 
+            Node node = new Node(val, this.head);
+            this.head = node;
+            return;
+        }
+        else if(idx > this.length()) {System.out.println("Invalid index"); return;}
+        else{
+            Node dummy = this.head;
+            int count = 0;
+            while(count!=idx-1){
+                dummy = dummy.next;
+                count++;
+            }
+            Node node = new Node(val, dummy.next);
+            dummy.next = node;
+
+        }
+
+    }
+    
+
+    void remove_idx(int idx){
+        if(idx==0) this.head = this.head.next;
+        else{
+            int count = 0;
+            Node dummy = this.head;
+            while(count!=idx-1){
+                count++;
+                dummy = dummy.next;
+            }
+            dummy.next = dummy.next.next;
+        }
+    }
+
+    void print(){
+        String ll_string = "";
+        Node dummy = this.head;
+        while(dummy!=null){
+            ll_string += dummy.val + "->";
+            dummy = dummy.next;
+        }
+        System.out.println(ll_string);
+
+    }
+    
+    
+
+
+}
+
+
+//SingleLinkedLists not implemented by default in Java so I created one.
+public class SingleLinkedLists {
+    public static void main(String[] args){
+
+        SLL linkedlist = new SLL();
+
+        //check for all cases of inserting at begin/end/middle
+
+        linkedlist.insert_begin(10);
+        linkedlist.insert_begin(102);
+        linkedlist.insert_begin(330);
+        linkedlist.insert_begin(10123);
+
+        linkedlist.print();
+
+        linkedlist.insert_end(22);
+        linkedlist.insert_end(23);
+        linkedlist.insert_end(272);
+        linkedlist.insert_end(227);
+
+
+        linkedlist.print();
+
+        linkedlist.insert_middle(303, 2);
+        linkedlist.insert_middle(399, 0);
+        linkedlist.insert_middle(999, 10);
+        linkedlist.insert_middle(999, 12);  //Invalid index
+
+        linkedlist.print();
+
+        //Removing indices
+
+        linkedlist.remove_idx(0);
+        linkedlist.remove_idx(1);
+        linkedlist.remove_idx(6);
+        linkedlist.remove_idx(7);
+
+        linkedlist.print();
+
+        System.out.println(linkedlist.length());
+
+
+
+
+    }
+    
+}
