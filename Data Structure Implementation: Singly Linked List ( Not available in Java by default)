@@ -1,15 +1,15 @@
-class Node{
-    protected int val;
-    protected Node next;
+class Node<T>{
+    protected T val;
+    protected Node<T> next;
 
-    Node(int val, Node next){
+    Node(T val, Node<T> next){
         this.val = val;
         this.next = next;
     }
 }
 
-class SLL {
-    private Node head;
+class SLL<T> {
+    private Node<T> head;
 
     SLL(){
         this.head = null;
@@ -18,7 +18,7 @@ class SLL {
 
     int length(){
         int length = 0;
-        Node dummy = this.head;
+        Node<T> dummy = this.head;
 
         while(dummy!=null){
             dummy = dummy.next;
@@ -27,37 +27,37 @@ class SLL {
         return length;
     }
 
-    void insert_begin(int val){
-        Node node = new Node(val, this.head);
+    void insert_begin(T val){
+        Node<T> node = new Node<>(val, this.head);
         this.head = node;
     }
 
-    void insert_end(int val){
-        Node dummy = this.head;
+    void insert_end(T val){
+        Node<T> dummy = this.head;
 
         while(dummy.next != null){
             dummy = dummy.next;
         }
-        Node node = new Node(val, null);
+        Node<T> node = new Node<>(val, null);
         dummy.next = node;
     }
 
-    void insert_middle(int val, int idx){
+    void insert_middle(T val, int idx){
         
         if(idx == 0) { 
-            Node node = new Node(val, this.head);
+            Node<T> node = new Node<>(val, this.head);
             this.head = node;
             return;
         }
         else if(idx > this.length()) {System.out.println("Invalid index"); return;}
         else{
-            Node dummy = this.head;
+            Node<T> dummy = this.head;
             int count = 0;
             while(count!=idx-1){
                 dummy = dummy.next;
                 count++;
             }
-            Node node = new Node(val, dummy.next);
+            Node<T> node = new Node<>(val, dummy.next);
             dummy.next = node;
 
         }
@@ -69,7 +69,7 @@ class SLL {
         if(idx==0) this.head = this.head.next;
         else{
             int count = 0;
-            Node dummy = this.head;
+            Node<T> dummy = this.head;
             while(count!=idx-1){
                 count++;
                 dummy = dummy.next;
@@ -80,7 +80,7 @@ class SLL {
 
     void print(){
         String ll_string = "";
-        Node dummy = this.head;
+        Node<T> dummy = this.head;
         while(dummy!=null){
             ll_string += dummy.val + "->";
             dummy = dummy.next;
@@ -99,7 +99,7 @@ class SLL {
 public class SingleLinkedLists {
     public static void main(String[] args){
 
-        SLL linkedlist = new SLL();
+        SLL<Integer> linkedlist = new SLL<>();
 
         //check for all cases of inserting at begin/end/middle
 
@@ -131,10 +131,15 @@ public class SingleLinkedLists {
         linkedlist.remove_idx(1);
         linkedlist.remove_idx(6);
         linkedlist.remove_idx(7);
+        
 
         linkedlist.print();
 
         System.out.println(linkedlist.length());
+
+        linkedlist.remove_idx(6);
+        linkedlist.print();
+
 
 
 
