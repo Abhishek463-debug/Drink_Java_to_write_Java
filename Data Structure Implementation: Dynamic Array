@@ -67,6 +67,10 @@ class DynArray<T>{
     public T get(int idx){
         return this.arr[idx];
     }
+    public void set(int idx, T item){ //can only be set within (0, this.size-1)
+        if(idx<0 || idx>=this.size) throw new IndexOutOfBoundsException();
+        this.arr[idx] = item;
+    }
     public int size(){
         return this.size;
     }
@@ -144,8 +148,12 @@ public class DynamicArrays {
         DynArray<String> a = new DynArray<>();
 
         System.out.println(a.isEmpty()); // true
-        a.print(); //[]
+        a.print();
+
+        dynarr.print();
+
+        dynarr.set(dynarr.size()-1, 10); //idx must be less than size
+        dynarr.print();
     }
     
 }
-
