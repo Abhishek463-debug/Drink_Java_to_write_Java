@@ -3,9 +3,9 @@
 
 class DynArray<T>{
 
-    int size;
-    T[] arr;
-    int capacity = 10;
+    private int size;
+    private T[] arr;
+    private int capacity = 10;
 
 
     @SuppressWarnings("unchecked")
@@ -107,7 +107,7 @@ public class DynamicArrays {
         dynarr.insert(0, 100);
         dynarr.print();
         
-        dynarr.insert(dynarr.size, 1000);
+        dynarr.insert(dynarr.size(), 1000);
         dynarr.print();
 
         System.out.println(dynarr.get(5));
