@@ -87,7 +87,7 @@ class DynArray<T>{
     }
     public int search_idx(T item){
         for(int i=0; i < this.size; i++){
-            if(this.arr[i] == item) return i;
+            if(this.arr[i].equals(item)) return i;
         }
         return -1;
     }
