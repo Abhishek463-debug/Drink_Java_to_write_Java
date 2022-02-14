@@ -88,6 +88,9 @@ class DynArray<T>{
     public boolean isEmpty(){
         return this.size == 0;
     }
+    public int capacity(){
+        return this.capacity;
+    }
 }
 
 
@@ -129,9 +132,17 @@ public class DynamicArrays {
 
         System.out.println(dynarr.isEmpty()); //false
 
+        for(int i=20; i>0; i--){
+            dynarr.add(i);
+        }
+        dynarr.print();
+
+        System.out.println(dynarr.capacity()); //40
+
         DynArray<String> a = new DynArray<>();
 
         System.out.println(a.isEmpty()); // true
     }
     
 }
+
