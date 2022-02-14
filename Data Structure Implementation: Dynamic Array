@@ -9,20 +9,20 @@ class DynArray<T>{
 
 
     @SuppressWarnings("unchecked")
-    DynArray(){
+    public DynArray(){
         this.size = 0;
         this.arr = (T[]) new Object[capacity];
 
     }
     @SuppressWarnings("unchecked")
-    DynArray(int capacity){
+    public DynArray(int capacity){
         this.capacity = capacity;
         this.size = 0;
         this.arr = (T[]) new Object[this.capacity];
     }
 
     @SuppressWarnings("unchecked")
-    void add(T item){
+    public void add(T item){
         if(this.size==this.capacity-1){
             T[] arr1 = (T[]) new Object[this.capacity*2];
             this.capacity *=2;
@@ -35,7 +35,7 @@ class DynArray<T>{
         this.arr[this.size] = item;
         this.size++;
     }
-    void remove(int idx){
+    public void remove(int idx){
         while(idx!=this.size){
             this.arr[idx] = this.arr[idx+1];
             idx++;
@@ -43,12 +43,12 @@ class DynArray<T>{
         }
         this.size--;
     }
-    void pop(){
+    public void pop(){
         this.arr[this.size-1] = null;
         this.size--;
     }
     @SuppressWarnings("unchecked")
-    void insert(int idx, T val){
+    public void insert(int idx, T val){
         if(this.size==this.capacity-1){
             T[] arr1 = (T[]) new Object[this.capacity*2];
             for(int i =0; i < this.size; i++){
@@ -64,14 +64,14 @@ class DynArray<T>{
         this.arr[traverseback] = val;
         this.size++;
     }
-    T get(int idx){
+    public T get(int idx){
         return this.arr[idx];
     }
-    int size(){
+    public int size(){
         return this.size;
     }
 
-    void print(){
+    public void print(){
         for(int i =0; i < this.size; i++){
             if(i==0)System.out.print("[" + this.arr[i] + ", ");
             else if(i==this.size-1)System.out.print(this.arr[i]+"]");
@@ -116,3 +116,4 @@ public class DynamicArrays {
     }
     
 }
+
