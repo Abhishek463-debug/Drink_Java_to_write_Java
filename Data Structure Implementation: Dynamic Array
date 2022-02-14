@@ -51,6 +51,7 @@ class DynArray<T>{
     public void insert(int idx, T val){
         if(this.size==this.capacity-1){
             T[] arr1 = (T[]) new Object[this.capacity*2];
+            this.capacity *= 2;
             for(int i =0; i < this.size; i++){
                 arr1[i] = this.arr[i];
             }
@@ -154,6 +155,8 @@ public class DynamicArrays {
 
         dynarr.set(dynarr.size()-1, 10); //idx must be less than size
         dynarr.print();
+
     }
     
 }
+
