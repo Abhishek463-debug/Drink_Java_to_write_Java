@@ -72,6 +72,7 @@ class DynArray<T>{
     }
 
     public void print(){
+        if (this.size==0) {System.out.println("[]"); return;}
         for(int i =0; i < this.size; i++){
             if(i==0)System.out.print("[" + this.arr[i] + ", ");
             else if(i==this.size-1)System.out.print(this.arr[i]+"]");
@@ -91,6 +92,7 @@ class DynArray<T>{
     public int capacity(){
         return this.capacity;
     }
+
 }
 
 
@@ -137,11 +139,12 @@ public class DynamicArrays {
         }
         dynarr.print();
 
-        System.out.println(dynarr.capacity()); //40
+        System.out.println(dynarr.capacity());
 
         DynArray<String> a = new DynArray<>();
 
         System.out.println(a.isEmpty()); // true
+        a.print();
     }
     
 }
