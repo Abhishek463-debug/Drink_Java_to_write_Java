@@ -144,7 +144,7 @@ public class DynamicArrays {
         DynArray<String> a = new DynArray<>();
 
         System.out.println(a.isEmpty()); // true
-        a.print();
+        a.print(); //[]
     }
     
 }
