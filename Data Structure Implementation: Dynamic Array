@@ -1,0 +1,118 @@
+//import java.util.*;
+//Dynamic Generic Array with basic features, add, remove(idx), pop(), print(), insert(idx, val)
+
+class DynArray<T>{
+
+    int size;
+    T[] arr;
+    int capacity = 10;
+
+
+    @SuppressWarnings("unchecked")
+    DynArray(){
+        this.size = 0;
+        this.arr = (T[]) new Object[capacity];
+
+    }
+    @SuppressWarnings("unchecked")
+    DynArray(int capacity){
+        this.capacity = capacity;
+        this.size = 0;
+        this.arr = (T[]) new Object[this.capacity];
+    }
+
+    @SuppressWarnings("unchecked")
+    void add(T item){
+        if(this.size==this.capacity-1){
+            T[] arr1 = (T[]) new Object[this.capacity*2];
+            this.capacity *=2;
+            for(int i=0; i < this.size; i++){
+                arr1[i] = arr[i];
+            }
+            this.arr = arr1;
+            //System.out.println(Arrays.toString(arr));
+        }
+        this.arr[this.size] = item;
+        this.size++;
+    }
+    void remove(int idx){
+        while(idx!=this.size){
+            this.arr[idx] = this.arr[idx+1];
+            idx++;
+            
+        }
+        this.size--;
+    }
+    void pop(){
+        this.arr[this.size-1] = null;
+        this.size--;
+    }
+    @SuppressWarnings("unchecked")
+    void insert(int idx, T val){
+        if(this.size==this.capacity-1){
+            T[] arr1 = (T[]) new Object[this.capacity*2];
+            for(int i =0; i < this.size; i++){
+                arr1[i] = this.arr[i];
+            }
+            this.arr = arr1;
+        }
+        int traverseback = this.size;
+        while (traverseback!=idx){
+            this.arr[traverseback] = this.arr[traverseback-1];
+            traverseback--;
+        }
+        this.arr[traverseback] = val;
+        this.size++;
+    }
+    T get(int idx){
+        return this.arr[idx];
+    }
+    int size(){
+        return this.size;
+    }
+
+    void print(){
+        for(int i =0; i < this.size; i++){
+            if(i==0)System.out.print("[" + this.arr[i] + ", ");
+            else if(i==this.size-1)System.out.print(this.arr[i]+"]");
+            else System.out.print(this.arr[i]+ ", ");
+        }
+        System.out.println();
+    }
+}
+
+
+
+public class DynamicArrays {
+
+    public static void main(String[] args){
+
+        DynArray<Integer> dynarr = new DynArray<>();
+
+        for(int i=11; i>= 0; i--) dynarr.add(i);
+        dynarr.print();
+
+        dynarr.remove(3);
+        dynarr.print();
+
+        dynarr.remove(4);
+        dynarr.print();
+
+        dynarr.pop();
+        dynarr.print();
+
+        dynarr.insert(2, 10);
+        dynarr.print();
+
+        dynarr.insert(0, 100);
+        dynarr.print();
+        
+        dynarr.insert(dynarr.size, 1000);
+        dynarr.print();
+
+        System.out.println(dynarr.get(5));
+        
+        System.out.println(dynarr.size());
+    }
+    
+}
