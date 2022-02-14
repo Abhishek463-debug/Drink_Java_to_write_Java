@@ -86,8 +86,7 @@ class DynArray<T>{
         return -1;
     }
     public boolean isEmpty(){
-        if (this.size>0) return false;
-        return true;
+        return this.size == 0;
     }
 }
 
