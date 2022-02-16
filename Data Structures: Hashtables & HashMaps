@@ -1,0 +1,37 @@
+
+import java.util.*;
+
+public class HashTableHashMap {
+
+
+    public static void main(String[] args){
+        //Store a key value pair (each key is mapped to a value)
+
+        //keys are hashed and hashCode%(size) used as index
+
+        //Linear Probing, Quadratic Probing, and Separate chaining used as methods to deal with Collisions (collision handling)
+
+        //Important Methods: isEmpty(), get(), put(), remove(), contains(), containsKey(), containsValue(), compute(K k, (k,v) -> change v or somehow)
+
+        //clear(), elements() (returns enumeration object), entrySet(), keySet(), values(), size(), equals()
+
+        //hashtable vs hashmap: synced vs unsynced, slower vs faster because of mutex/lock in all methods to ensure thread-safety
+
+        //Thread-safety is when the variable cannot be accessed by two methods at the same time to ensure that data races don't happen
+
+        int[] arr = {1,2,3,4,5,6,7,89,1,2,3,4};
+
+        Hashtable<Integer, Integer> table = new Hashtable<>(15, 1.0f);
+
+        //Creating a simple counter for arr with hashtables
+        for (int i: arr) {
+            if(!table.contains(i)) table.put(i, 1);
+            else table.put(i, table.get(i) + 1);
+        }
+
+        System.out.println(table.entrySet());
+
+        
+    }
+    
+}
