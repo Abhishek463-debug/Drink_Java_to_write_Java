@@ -51,6 +51,10 @@ class Graph<K> {
     public void print(){
         System.out.println(this.graph.entrySet());
     }
+
+    public int size(){
+        return this.graph.size();
+    }
 }
 
 
@@ -76,6 +80,8 @@ public class Graphs {
    graph1.removeNode(10);
 
    graph1.print();
+
+   System.out.println("The number of nodes in the graph are: " + graph1.size());
 
 
     
