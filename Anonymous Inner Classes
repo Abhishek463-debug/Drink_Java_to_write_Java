@@ -1,7 +1,7 @@
 //anonymous inner classes can only be used once as they don't actually have a class to instantiate from. (They're always subclasses or implementations of interfaces)
 //useful when we only need one object to implement/extend interface/class.
 
-```java
+
 class Animal {
     int age;
     double weight;
@@ -76,4 +76,4 @@ public class AnonymousInnerClasses {
 
 }
 }
-```
+
