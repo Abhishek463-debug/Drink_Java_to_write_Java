@@ -37,16 +37,30 @@ class Graph<K> {
         }
         
     }
-    public void removeEdge(K node1, K node2){
+    public boolean removeEdge(K node1, K node2){ //if edge remove possible, returns true, else false
+
+        if(this.graph.containsKey(node1) && this.graph.containsKey(node2)){
+
         this.graph.get(node1).remove(node2);
         this.graph.get(node2).remove(node1);
 
+        return true;
+
+        }
+        return false;
+
     }
-    public void removeNode(K node1){
+    public boolean removeNode(K node1){
+
+        if(this.graph.containsKey(node1)) {
         for(K value: this.graph.get(node1)){
             this.graph.get(value).remove(node1);
         }
         this.graph.remove(node1);
+        return true;
+
+    }
+    return false;
     }
     public void print(){
         System.out.println(this.graph.entrySet());
@@ -83,7 +97,10 @@ public class Graphs {
 
    System.out.println("The number of nodes in the graph are: " + graph1.size());
 
+   graph1.removeEdge(11, 22);
+
 
     
 }
 }
+
