@@ -6,8 +6,8 @@
 import java.util.*;
 
 class Pair<X,Y> {
-    X one;
-    Y two;
+    private X one;
+    private Y two;
 
     Pair(X one, Y two){
         this.one = one;
