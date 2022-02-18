@@ -1,6 +1,8 @@
 //Created a tuple data structure called Pair<X,Y> instead of downloading inbuilt library, and implemented DFS, BFS paths in Graph data structure
 //Graph was in the form of HashMap<K, HashSet<K>> -> O(1) lookup, O(1) deletion, O(1) insertion (worst case: O(n))
 
+//DFS gives a random path, BFS always gives shortest path.
+
 import java.util.*;
 
 
