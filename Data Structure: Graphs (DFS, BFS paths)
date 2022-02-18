@@ -1,0 +1,228 @@
+//Created a tuple data structure called Pair<X,Y> instead of downloading inbuilt library, and implemented DFS, BFS paths in Graph data structure
+//Graph was in the form of HashMap<K, HashSet<K>> -> O(1) lookup, O(1) deletion, O(1) insertion (worst case: O(n))
+
+import java.util.*;
+
+
+class Pair<N1, N2>{
+    private N1 one;
+    private N2 two;
+
+    Pair(N1 one, N2 two){
+        this.one = one;
+        this.two = two;
+    }
+
+    public String toString(){
+
+        return this.one + " " + this.two;
+    }
+
+    public N1 get_first(){
+        return this.one;
+    }
+
+    public N2 get_second(){
+        return this.two;
+    }
+    
+}
+
+class Graph<K> {
+   private HashMap<K, HashSet<K>> graph;
+
+    Graph(){
+        this.graph = new HashMap<>();
+    }
+
+    public void addNode(K key){
+        if(!this.graph.containsKey(key))this.graph.put(key, new HashSet<>());   
+    }
+
+    public void addEdge(K node1, K node2){
+        if(!this.graph.containsKey(node1) && !this.graph.containsKey(node2)){
+            this.graph.put(node1, new HashSet<>());
+            this.graph.put(node2, new HashSet<>());
+            this.graph.get(node1).add(node2);
+            this.graph.get(node2).add(node1);
+        }
+        else if(!this.graph.containsKey(node2)){
+            this.graph.put(node2, new HashSet<>());
+            this.graph.get(node1).add(node2);
+            this.graph.get(node2).add(node1);
+
+        }
+        else if(!this.graph.containsKey(node1)){
+            this.graph.put(node1, new HashSet<>());
+            this.graph.get(node1).add(node2);
+            this.graph.get(node2).add(node1);
+
+        }
+        else {
+            this.graph.get(node1).add(node2);
+            this.graph.get(node2).add(node1);
+
+        }
+        
+    }
+    public boolean removeEdge(K node1, K node2){ //if edge remove possible, returns true, else false
+
+        if(this.graph.containsKey(node1) && this.graph.containsKey(node2)){
+
+        this.graph.get(node1).remove(node2);
+        this.graph.get(node2).remove(node1);
+
+        return true;
+
+        }
+        return false;
+
+    }
+    public boolean removeNode(K node1){
+
+        if(this.graph.containsKey(node1)) {
+        for(K value: this.graph.get(node1)){
+            this.graph.get(value).remove(node1);
+        }
+        this.graph.remove(node1);
+        return true;
+
+    }
+    return false;
+    }
+    public void print(){
+        System.out.println(this.graph.entrySet());
+    }
+
+    public int size(){
+        return this.graph.size();
+    }
+
+    public HashMap<K,K> dfs(K root){
+
+        HashMap<K,K> path = new HashMap<>();
+        Stack<Pair<K,K>> stack = new Stack<>();
+
+        stack.push(new Pair<>(null, root));
+
+        while(!stack.empty()){
+            Pair<K,K> pair = stack.pop();
+
+            K a = pair.get_first();
+            K b = pair.get_second();
+            if(!path.containsKey(b)){
+                path.put(b,a);
+                for(K k: this.graph.get(b)){
+                    stack.push(new Pair<>(b,k));
+                }
+            }
+        }
+        return path;
+
+        //return new HashMap<>();
+    }
+    public HashMap<K,K> bfs(K root){
+
+        HashMap<K,K> path = new HashMap<>();
+
+        Queue<Pair<K,K>> queue = new LinkedList<>();
+
+        queue.offer(new Pair<>(null,root));
+
+        while(!queue.isEmpty()){
+            Pair<K,K> pair = queue.poll();
+
+            K a = pair.get_first();
+            K b = pair.get_second();
+
+            if(!path.containsKey(b)){
+                path.put(b,a);
+                for(K k: this.graph.get(b)){
+                    queue.offer(new Pair<>(b,k));
+                }
+            }
+        }
+        return path;
+    }
+
+    public ArrayList<K> dfs_path(K a, K b){
+        ArrayList<K> list = new ArrayList<>();
+        HashMap<K,K> map = dfs(b);
+        if(map.containsKey(a)){
+            while(a!=null){
+                list.add(a);
+                a = map.get(a);
+            }
+        }
+        return list;
+    }
+
+    public ArrayList<K> bfs_path(K a, K b){
+        ArrayList<K> list = new ArrayList<>();
+        HashMap<K,K> map = bfs(b);
+        if(map.containsKey(a)){
+            while(a!=null){
+                list.add(a);
+                a = map.get(a);
+            }
+        }
+        return list;
+    }
+
+    public String toString(){
+        return this.graph.toString();
+    }
+}
+
+
+public class Graphs {
+
+    public static void main(String[] args){
+
+    Graph<Character> graph1 = new Graph<>();
+
+    graph1.addEdge('a', 'b');
+    graph1.addEdge('b','c');
+    graph1.addEdge('c','d');
+    graph1.addEdge('a','d');
+    graph1.addEdge('b', 'd');
+
+    graph1.addEdge('d','e');
+    graph1.addEdge('e','f');
+//     graph1.addNode(10);
+
+//     graph1.print();
+
+//    graph1.removeEdge(3,2);
+
+//    graph1.print();
+
+//    graph1.removeNode(10);
+
+//    graph1.print();
+
+//    System.out.println("The number of nodes in the graph are: " + graph1.size());
+
+//    graph1.removeEdge(11, 22);
+
+
+//    Pair<Integer, Integer> p = new Pair<>(null, 1);
+
+
+//    System.out.println(p);
+
+//    String a = "Testing";
+
+   //System.out.println(a.hashCode());
+
+   System.out.println(graph1.dfs('a'));
+
+   System.out.println(graph1.bfs('a'));
+
+   System.out.println(graph1);
+
+   System.out.println(graph1.dfs_path('a', 'f'));
+
+   System.out.println(graph1.bfs_path('a','f'));
+}
+}
