@@ -77,9 +77,16 @@ class BSTNode {
                 return this.right;
             }
             else {
-                int max = this.left.find_max(); //or int min = this.right.find_min();
-                this.data = max; // this.data = min;
-                this.left.remove(max); //this.right.remove(min);
+                int max = this.left.find_max(); 
+                this.data = max; 
+                this.left.remove(max); 
+
+                //or
+                /*
+                int min = this.right.find_min();
+                this.data = min;
+                this.right.remove(min);
+                */
             }
         }
         return this;
@@ -176,7 +183,6 @@ public class BSTs {
         for(int i=0; i < 9; i++){
             list1.add(i);
         }
-        
         
         BSTNode tree1 = build_BST(list1);
 
