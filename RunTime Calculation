@@ -1,0 +1,18 @@
+public class RunTime {
+
+    public static void main(String[] args){
+
+        long start = System.nanoTime();
+
+        int i = 1000;
+        while(i != 0) {
+            int a = i - 1;
+            i--;
+
+            System.out.print(a + " "); //logging or printing onto screen is quite an expensive process (time wise)
+
+        }
+        System.out.println("The program took this much time in milliseconds: " + ((System.nanoTime() - start)/1000000));
+    }
+    
+}
