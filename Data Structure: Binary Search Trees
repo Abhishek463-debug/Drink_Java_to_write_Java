@@ -1,0 +1,175 @@
+import java.util.*;
+///O(logn) lookup for ordered data!!!
+class BSTNode {
+    private int data; 
+    private BSTNode left;
+    private BSTNode right;
+
+    BSTNode(int data){ this.data = data;}
+
+    public void add_child(int data){
+        if(data == this.data) return;
+
+        if(data < this.data && this.left != null){
+            this.left.add_child(data);
+        }
+        else if(data < this.data && this.left == null) {
+            this.left = new BSTNode(data);
+        }
+        else if(data > this.data && this.right != null){
+            this.right.add_child(data);
+        }
+        else {
+            this.right = new BSTNode(data);
+        }
+    }
+
+    public boolean search(int data){
+        if(data == this.data) return true;
+
+        else if(data < this.data) { 
+            if(this.left != null) {
+            return this.left.search(data);
+        }
+    }
+        else {
+            if(this.right != null){
+            return this.right.search(data); 
+        }
+    }
+    return false;
+
+    }
+
+    public int find_min(){
+        if(this.left != null){
+            return this.left.find_min();
+        }
+        return this.data;
+    }
+
+    public int find_max(){
+        if(this.right != null){
+            return this.right.find_max();
+        }
+        return this.data;
+    }
+
+    public BSTNode remove(int data){
+        if(data < this.data){
+            if(this.left != null){
+                this.left = this.left.remove(data);
+            }
+        }
+        else if(data > this.data){
+            if(this.right != null){
+                this.right = this.right.remove(data);
+            }
+        }
+        else {
+            if(this.left == null && this.right == null){
+                return null;
+            }
+            else if (this.left != null && this.right == null){
+                return this.right;
+            }
+            else if (this.left == null && this.right != null){
+                return this.right;
+            }
+            else {
+                int max = this.left.find_max(); //or int min = this.right.find_min();
+                this.data = max; // this.data = min;
+                this.left.remove(max); //this.right.remove(min);
+            }
+        }
+        return this;
+    }
+    public ArrayList<Integer> preorder() {
+        ArrayList<Integer> preordered = new ArrayList<>();
+
+
+        preordered.add(this.data);
+        if(this.left != null) {
+        preordered.addAll(this.left.preorder());
+        }
+        if(this.right != null) {
+        preordered.addAll(this.right.preorder());
+        }
+
+        return preordered;
+
+
+    }
+    public ArrayList<Integer> inorder() {
+        ArrayList<Integer> inordered = new ArrayList<>();
+
+        if(this.left != null) {
+        inordered.addAll(this.left.inorder());
+        }
+        inordered.add(this.data);
+
+        if(this.right != null){
+        inordered.addAll(this.right.inorder());
+        }
+
+        return inordered;
+    }
+    public ArrayList<Integer> postorder() {
+        ArrayList<Integer> postordered = new ArrayList<>();
+
+        if(this.left != null) {
+        postordered.addAll(this.left.postorder());
+        }
+
+        if (this.right != null){
+
+        postordered.addAll(this.right.postorder());
+        }
+
+        postordered.add(this.data);
+
+        return postordered;
+    }
+    
+}
+
+
+
+
+
+public class BSTs {
+
+    public static BSTNode build_BST(ArrayList<Integer> list){
+        BSTNode root = new BSTNode(list.get(0));
+        for(int i=1; i < list.size(); i++){
+            root.add_child(list.get(i));
+        }
+
+        return root;
+    }
+    public static void main(String[] args){
+
+        ArrayList<Integer> list = new ArrayList<>();
+
+        int[] arr = {17,4,1,20,9,23,23,18,34};
+
+        for(int i: arr) list.add(i);
+
+        BSTNode tree = build_BST(list);
+
+        System.out.println(tree.search(20));
+        System.out.println(tree.search(10));
+
+        System.out.println(tree.preorder());
+        System.out.println(tree.inorder());
+        System.out.println(tree.postorder());
+
+        tree.remove(23);
+        System.out.println(tree.preorder());
+        System.out.println(tree.inorder());
+        System.out.println(tree.postorder());
+
+
+    }
+    
+}
