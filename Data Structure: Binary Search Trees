@@ -151,7 +151,8 @@ public class BSTs {
 
         ArrayList<Integer> list = new ArrayList<>();
 
-        int[] arr = {17,4,1,20,9,23,23,18,34};
+        int[] arr = {17,4,1,20,9,23,23,18,34}; //items presented in preorder (inserting is done in that format to create a balanced binary search tree) 
+                                                //we can create a binary search tree with items presented in inorder and postorder too, but there's a different logic required
 
         for(int i: arr) list.add(i);
 
@@ -160,6 +161,7 @@ public class BSTs {
         System.out.println(tree.search(20));
         System.out.println(tree.search(10));
 
+        
         System.out.println(tree.preorder());
         System.out.println(tree.inorder());
         System.out.println(tree.postorder());
@@ -169,6 +171,26 @@ public class BSTs {
         System.out.println(tree.inorder());
         System.out.println(tree.postorder());
 
+        ArrayList<Integer> list1 = new ArrayList<>();
+
+        for(int i=0; i < 9; i++){
+            list1.add(i);
+        }
+        
+        
+        BSTNode tree1 = build_BST(list1);
+
+        System.out.println(tree1.search(20));
+        System.out.println(tree1.search(10));
+
+        System.out.println(tree1.preorder());
+        System.out.println(tree1.inorder());
+        System.out.println(tree1.postorder());
+
+        tree1.remove(3);
+        System.out.println(tree1.preorder());
+        System.out.println(tree1.inorder());
+        System.out.println(tree1.postorder());
 
     }
     
