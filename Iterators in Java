@@ -1,0 +1,56 @@
+//Iterators, Enumerations (essentially weak iterators, don't use this, probably only useful for HashTables), 
+//ListIterators (only for Lists, i.e. not Hashing Collections like HashSet)
+
+import java.util.*;
+
+public class Iterators {
+        public static void main(String[] args){
+
+            ArrayList<Integer> list = new ArrayList<>();
+
+            for(int i=0; i < 11; i++){
+                list.add(i);
+            }
+
+            Iterator<Integer> itr = list.iterator();
+
+            while(itr.hasNext()){
+
+                int i = itr.next();
+                if(i%2==0){
+                    itr.remove();
+                }
+            }
+            System.out.println(list);
+
+            Vector<Integer> v = new Vector<>(list);
+
+            Enumeration<Integer> enum1 = v.elements();
+
+            while(enum1.hasMoreElements()){
+                System.out.print(enum1.nextElement() + " ");
+            }
+
+            ListIterator<Integer> l_itr = list.listIterator();
+
+            while(l_itr.hasNext()){
+                int i = l_itr.next();
+                int idx = l_itr.nextIndex();
+
+                System.out.println(i + " " + idx);
+            }
+
+            
+            while(l_itr.hasPrevious()){
+                int i = l_itr.previous();
+
+                if(i==5){
+                    l_itr.add(45);
+                    l_itr.next();
+                    l_itr.remove();
+                }
+            }
+
+            System.out.println(list);
+    }
+}
