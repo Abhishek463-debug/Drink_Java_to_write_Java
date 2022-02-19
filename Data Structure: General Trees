@@ -1,0 +1,85 @@
+import java.util.*;
+
+class Tree<T> {
+
+    T val;
+    Tree<T> parent;
+    ArrayList<Tree<T>> children;
+
+    Tree(T val){
+
+        this.val = val;
+        this.parent = null;
+        this.children = new ArrayList<>();
+    }
+    public void add_child(Tree<T> child){
+        this.children.add(child);
+        child.parent = this;
+    }
+
+    public void add_child(T child_val){
+        //this assumes that each child added is a new child (if each child has a unique name/val from each parent)
+        Tree<T> child = new Tree<T>(child_val); //this is this main use of == vs .equals(obj) -> a child can have all the same values, but since memory location is different
+        this.children.add(child); //it is considered as a differnt child 
+        child.parent = this; //for more secure code(not required)
+        //Example for the comments above: child a = {"Aaron", parent: this, children = null}, child b = {"Aaron", parent: this, children= null} 
+        //The inside values are the same, but they are two different children as they occupy different memory locations
+    }
+
+    public int get_level(){
+        int level = 0;
+        Tree<T> dummy = this;
+        while(dummy != null){
+            level++;
+            dummy = dummy.parent;
+        }
+        return level;
+    }
+
+    public void hierarchy(){
+        Tree<T> dummy = this;
+        String spaces = "";
+        for(int i=0; i < this.get_level(); i++){
+            spaces += "    ";
+        }
+        spaces += ">";
+        System.out.println(spaces + this.val);
+        for(Tree<T> child: dummy.children){
+            child.hierarchy();
+        }
+    }
+
+}
+
+
+public class Trees {
+
+    public static void main(String[] args){
+    Tree<String> main = new Tree<>("Programming Languages");
+    Tree<String> apps = new Tree<>("Application Development(Web + Mobile)");
+    Tree<String> systems = new Tree<>("Systems languages (Systems, Games, Simulators)");
+    Tree<String> beginner = new Tree<>("Beginners/Scripting/Data Science");
+    main.add_child(systems);
+    main.add_child(apps);
+    main.add_child(beginner);
+
+    systems.add_child("Rust");
+    systems.add_child("C++");
+    systems.add_child("C");
+    systems.add_child("Zig");
+    apps.add_child("Java");
+    apps.add_child("C#");
+    apps.add_child("Kotlin");
+    apps.add_child("Dart");
+    apps.add_child("Go");
+    beginner.add_child("Python");
+    beginner.add_child("Javascript");
+    beginner.add_child("Typescript");
+    beginner.add_child("Ruby");
+    main.hierarchy();
+
+
+
+    }
+    
+}
