@@ -1,0 +1,29 @@
+/*
+
+Serialization: Converting data to bytestream to store in files, databases, persistent memory, pass around through networks
+Deserialization: Converting bytes from files, databases, persistent memory, i/o from networks to bytestream to finally be converted to readable data
+
+        Serialization                      Deserialization
+ Data -> ByteStream -> Persistent Memory, 
+                       Databases, 
+                       Files, 
+                       Networks ->         ByteStream -> Readable data
+                       
+  
+Endianness: How data is stored in the memory.
+Two types: Little Endian, Big Endian
+
+Little Endian: The most significant bit of a number is stored in the largest memory address.
+
+Big Endian: The most significant bit of a number is stored in the smallest memory address.
+
+            Number (easy example: not accurate in terms of what actually happens as int is 4 bytes in Java)
+            
+            Memory address:      0x01 |0x02|0x03|0x04
+            
+            Little endian (1076)   6  | 7  | 0  |  1 |
+            Big endian    (1076)   1  | 0  | 7  |  6 |
+     */
+ 
+ 
+ 
