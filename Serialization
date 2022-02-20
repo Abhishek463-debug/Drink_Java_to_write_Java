@@ -60,6 +60,9 @@ public class Serialize{
     fOut.close();
 
     System.out.println("Check if everything is written into the new file created! (Serialized)");
+    
+    long serialVersionUID = ObjectStreamClass.lookup(user.getClass()).getSerialVersionUID();
+        System.out.println(serialVersionUID);
 
     }
 
