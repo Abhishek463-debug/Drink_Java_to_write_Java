@@ -20,6 +20,9 @@ Big Endian: The most significant bit of a number is stored in the smallest memor
             
             Little endian (1076)   6  | 7  | 0  |  1 |
             Big endian    (1076)   1  | 0  | 7  |  6 |
+            
+            
+            Transient: these attributes are ignored during serialization/deserialization!
      */
  import java.util.*;
  import java.io.*;
