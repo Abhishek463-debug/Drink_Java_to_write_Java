@@ -1,0 +1,23 @@
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
+import java.util.TreeMap;
+import java.util.*;
+
+public class ExtendedCollections {
+    
+
+    public static void main(String[] args){
+        //same methods as hashmaps/hashsets(except order of data entered is maintained via doubly linked list (having two more attributes: prev, next))
+        LinkedHashMap<Integer, Integer> lhm = new LinkedHashMap<>();
+        LinkedHashSet<Integer> lhs = new LinkedHashSet<>();
+
+
+        //same methods as hashmaps and hashsets (but treemap/sets are always sorted)
+        //with the addition of headMap(k)(all keys < k), tailMap(k) (all keys > k), subMap(k1, k2) (from k1 to k2), ceilingEntry/Key(k) (least key >= k)
+        TreeMap<Integer, Integer> tm = new TreeMap<>();
+        
+        //first(), last(), pollFirst(), pollLast() + all other important set methods, higher(k), lower(k), tailSet(k)(all values > k), subSet(k1, k2)(from k1 - k2), headSet(k) (all values < k)
+        TreeSet<Integer> ts = new TreeSet<>();
+
+    }
+}
