@@ -1,0 +1,89 @@
+
+import java.util.*;
+
+
+public class TimerTasks {
+
+    public static void main(String[] args){
+
+
+        Timer timer = new Timer();
+
+        TimerTask task1 = new TimerTask() {
+            @Override
+            public void run() {
+                System.out.println("Testing out timers!");
+                //timer.cancel();
+            }
+        };
+
+        timer.schedule(task1, 2000); //waits for 2k milliseconds, (2 seconds)
+
+        TimerTask taskAtTime = new TimerTask() {
+            @Override
+            public void run(){
+                System.out.println("This is a second test, I'm testing to see if it will run at a certain date/time.");
+                //timer.cancel();
+            }
+        };
+
+        Calendar date = Calendar.getInstance();
+
+        date.set(Calendar.YEAR, 2022);
+        date.set(Calendar.MONTH, Calendar.FEBRUARY);
+        date.set(Calendar.DAY_OF_MONTH, 20);
+        date.set(Calendar.HOUR_OF_DAY, 17);
+        date.set(Calendar.MINUTE, 10);
+        date.set(Calendar.SECOND, 10);
+
+
+        timer.schedule(taskAtTime, date.getTime()); //if current date/time greater, this item gets executed without any delay.
+
+        TimerTask taskRepeat = new TimerTask() {
+
+            int count = 10;
+            @Override
+            public void run() {
+                if(count > 0){
+                    System.out.println(count);
+                    count--;
+                }
+                else {
+                    System.out.println("Counted down to 0!");
+                    //timer.cancel();
+                    return;
+                }
+
+            }
+        };
+
+        timer.scheduleAtFixedRate(taskRepeat, 1000, 1000);
+
+        date.set(Calendar.YEAR, 2022);
+        date.set(Calendar.MONTH, Calendar.FEBRUARY);
+        date.set(Calendar.DAY_OF_MONTH, 20);
+        date.set(Calendar.HOUR_OF_DAY, 17);
+        date.set(Calendar.MINUTE, 21);
+        date.set(Calendar.SECOND, 0);
+
+        TimerTask taskAtTime2 = new TimerTask() {
+
+            int count = 10;
+            @Override
+            public void run() {
+                if(count > 0){
+                    System.out.println(count);
+                    count--;
+                }
+                else {
+                    System.out.println("Counted down to 0!");
+                    timer.cancel();
+                }
+
+            }
+        };
+
+        timer.scheduleAtFixedRate(taskAtTime2, date.getTime(), 1000);
+    }
+    
+}
