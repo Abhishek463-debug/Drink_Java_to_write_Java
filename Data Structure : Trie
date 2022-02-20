@@ -1,0 +1,64 @@
+//A variant of trees, that is most commonly used in spellchecking or autocompletion things for applications.
+
+class TrieNode {
+    HashMap<Character, TrieNode> children;
+    boolean wordEnd;
+    
+    TrieNode(){
+        this.children = new HashMap<>();
+        this.wordEnd = false;
+    }
+}
+
+
+class Trie {
+    TrieNode root;
+
+    public Trie() {
+        this.root = new TrieNode();
+        
+    }
+    
+    public void insert(String word) {
+        
+        TrieNode dummy = this.root;
+        for(int i = 0; i < word.length(); i++){
+            if(!dummy.children.containsKey(word.charAt(i))){
+                dummy.children.put(word.charAt(i), new TrieNode());
+            }
+            dummy = dummy.children.get(word.charAt(i));
+        }
+        dummy.wordEnd = true;
+                                       
+        
+    }
+    
+    public boolean search(String word) {
+        
+        TrieNode dummy = this.root;
+        for(int i = 0; i < word.length(); i++){
+            if(dummy.children.containsKey(word.charAt(i))){
+                dummy = dummy.children.get(word.charAt(i));
+            }
+            else {
+                return false;
+            }
+        }
+        return dummy.wordEnd;
+        
+    }
+    
+    public boolean startsWith(String prefix) {
+        TrieNode dummy = this.root;
+        for(int i = 0; i < prefix.length(); i++){
+            if(dummy.children.containsKey(prefix.charAt(i))){
+                dummy = dummy.children.get(prefix.charAt(i));
+            }
+            else {
+                return false;
+            }
+        }
+        return true;
+        
+    }
+}
