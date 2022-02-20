@@ -27,7 +27,7 @@ Big Endian: The most significant bit of a number is stored in the smallest memor
 class User implements Serializable {
      String name;
     int fav_number;
-     String fav_food;
+     transient String fav_food;
 
     User(String name, int fav_number, String fav_food){
         this.name = name;
