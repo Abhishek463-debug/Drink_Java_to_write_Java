@@ -3,11 +3,8 @@
 Serialization: Converting data to bytestream to store in files, databases, persistent memory, pass around through networks
 Deserialization: Converting bytes from files, databases, persistent memory, i/o from networks to bytestream to finally be converted to readable data
 
-        Serialization                      Deserialization
- Data -> ByteStream -> Persistent Memory, 
-                       Databases, 
-                       Files, 
-                       Networks ->         ByteStream -> Readable data
+        Serialization                         Storage                 Deserialization
+ Data -> ByteStream -> Persistent Memory, Databases, Files, Networks -> ByteStream -> Readable data
                        
   
 Endianness: How data is stored in the memory.
