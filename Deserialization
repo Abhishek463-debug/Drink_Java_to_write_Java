@@ -1,0 +1,63 @@
+/*
+
+Serialization: Converting data to bytestream to store in files, databases, persistent memory, pass around through networks
+Deserialization: Converting bytes from files, databases, persistent memory, i/o from networks to bytestream to finally be converted to readable data
+
+        Serialization                         Storage                 Deserialization
+ Data -> ByteStream -> Persistent Memory, Databases, Files, Networks -> ByteStream -> Readable data
+                       
+  
+Endianness: How data is stored in the memory.
+Two types: Little Endian, Big Endian
+
+Little Endian: The most significant bit of a number is stored in the largest memory address.
+
+Big Endian: The most significant bit of a number is stored in the smallest memory address.
+
+            Number (easy example: not accurate in terms of what actually happens as int is 4 bytes in Java)
+            
+            Memory address:      0x01 |0x02|0x03|0x04
+            
+            Little endian (1076)   6  | 7  | 0  |  1 |
+            Big endian    (1076)   1  | 0  | 7  |  6 |
+     */
+
+
+import java.io.FileNotFoundException;
+
+import java.io.*;
+
+
+class User implements Serializable {
+    String name;
+    int fav_number;
+    String fav_food;
+
+    User(String name, int fav_number, String fav_food){
+        this.name = name;
+        this.fav_number = fav_number;
+        this.fav_food = fav_food;
+    }
+}
+
+
+public class DeSerialize {
+
+    public static void main(String[] args) throws IOException, FileNotFoundException, ClassNotFoundException{ //instead we can also use try and catch blocks
+                                                                                                                //which i personally prefer, but knowing 
+                                                                                                                //how to use throws was important
+                                                                                                                //so i used it instead
+
+        FileInputStream fIn = new FileInputStream("serialized.ser");
+        ObjectInputStream objIn = new ObjectInputStream(fIn);
+
+        User user = (User) objIn.readObject();
+        objIn.close();
+        fIn.close();
+
+        System.out.println(user.name);
+
+
+    }
+    
+}
