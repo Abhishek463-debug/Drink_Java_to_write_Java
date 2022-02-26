@@ -1,0 +1,54 @@
+enum Cereals {
+    FROOTLOOPS(56, 3),
+    APPLEJACKS(65, 4),
+    COCOAPUFFS(73, 4.3f),
+    OREOCEREAL(543, 12);
+
+    int levelOfDeliciousness;
+    float price;
+
+    Cereals(int level, float price) {
+        this.levelOfDeliciousness = level;
+        this.price = price;
+    }
+
+}
+
+enum DaysOfTheWeek {
+    MONDAY,
+    TUESDAY,
+    WEDNESDAY, 
+    THURSDAY,
+    FRIDAY,
+    SATURDAY,
+    SUNDAY;
+}
+
+public class EnumsExamples {
+
+    public static void main(String[] args){
+
+        DaysOfTheWeek day = DaysOfTheWeek.THURSDAY;
+
+        if (day == DaysOfTheWeek.THURSDAY){
+            System.out.println("Yay, it's almost Friday!!");
+
+        }
+        for(DaysOfTheWeek day1: DaysOfTheWeek.values()){
+            System.out.println(day1);
+        }
+
+        int max_level = 0;
+        Cereals cereal = null;
+        for(Cereals c: Cereals.values()){
+            if(c.levelOfDeliciousness > max_level){
+                max_level = c.levelOfDeliciousness;
+                cereal = c;
+            }
+        }
+
+        System.out.println(cereal + " has the highest level of deliciousness: " +  max_level);
+
+    }
+}
+
