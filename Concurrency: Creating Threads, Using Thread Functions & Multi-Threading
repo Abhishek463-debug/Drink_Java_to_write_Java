@@ -1,0 +1,96 @@
+import java.util.concurrent.ThreadPoolExecutor;
+
+/*
+There are two ways to create a thread. Extending thread class and implementing runnable interface and using it as a parameter in new Thread(newRunnable);
+
+Prefer implementing runnable interface even if implementing thread is one step more. 
+
+Reason: If we use extending Thread:
+
+class NewThread extends Thread implments SomethingElse, MoreThings, ..etc {...@Override run() method...}
+----> The problem here is we cannot extend another class as multiple inheritance is not supported in Java. In the case of implementing the Runnable interface:
+
+class MyRunnable extends ParentClassWithLotsofMethodsandAttributes implements Runnable, ..MoreInterfaces {....@Override (Implement run() method from Runnable)....}
+
+Thread newthread = new Thread(new MyRunnable());
+
+----->Note that here: We can extend a parent class that has lots of things implemented like attributes and methods, making production time faster as we don't 
+need to reimplement the methods in them like we need implement methods written in interface.
+
+*/
+
+class NewThread extends Thread {
+    @Override
+    public void run() {
+        System.out.println("I created my own thread. I can do things like give it more attributes or functions.");
+    }
+}
+
+class MyRunnable implements Runnable {
+    @Override
+    public void run() {
+        System.out.println("This is the way to create a thread using Runnable interface!");
+    }
+}
+
+public class Threading {
+
+    public static void main(String[] args){
+
+        System.out.println(Thread.activeCount());
+
+        System.out.println(Thread.currentThread());
+
+        Thread.currentThread().setName("Testing");
+
+        System.out.println(Thread.currentThread().getName());
+
+        Thread.currentThread().setPriority(10);
+
+        System.out.println(Thread.currentThread().getPriority());
+
+        NewThread.currentThread().setPriority(5);
+
+        NewThread thread = new NewThread();
+
+        System.out.println(thread.isAlive());
+
+        thread.start();
+
+        System.out.println(thread.isAlive());
+
+        System.out.println(thread.getPriority());
+
+        
+        System.out.println(thread.getPriority());
+
+        MyRunnable myrunnable = new MyRunnable();
+
+        Thread run_thread = new Thread(myrunnable);
+        Thread threadrun2 = new Thread(myrunnable);
+        Thread threadrun3 = new Thread(myrunnable);
+
+        threadrun3.setDaemon(true);
+
+
+
+        run_thread.start();        //always use start to make concurrency work
+        //run_thread.join(); ..........waits for the thread to end its execution before continuing program execution flow
+        threadrun2.start();
+        threadrun3.start();
+
+
+        /* Even if threadrun3 is executing, but run_thread & threadrun2 have finished, the main function will end the program, because
+        threadrun3 is a Daemon thread/background thread. */
+
+        /*LIFECYCLE:
+           New => New thread is created.
+           Runnable => Ready to execute/run.
+           Blocked/Waiting => Thread is waiting for its turn.
+           Timed Waiting => When the thread called Thread.sleep(t in ms);
+           Termination => The thread performed its function or error occurred.
+           */
+
+    }
+    
+}
