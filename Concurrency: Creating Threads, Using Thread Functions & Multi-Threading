@@ -7,7 +7,7 @@ Prefer implementing runnable interface even if implementing thread is one step m
 
 Reason: If we use extending Thread:
 
-class NewThread extends Thread implments SomethingElse, MoreThings, ..etc {...@Override run() method...}
+class NewThread extends Thread implements SomethingElse, MoreThings, ..etc {...@Override run() method...}
 ----> The problem here is we cannot extend another class as multiple inheritance is not supported in Java. In the case of implementing the Runnable interface:
 
 class MyRunnable extends ParentClassWithLotsofMethodsandAttributes implements Runnable, ..MoreInterfaces {....@Override (Implement run() method from Runnable)....}
