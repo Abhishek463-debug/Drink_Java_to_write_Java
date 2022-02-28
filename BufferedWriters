@@ -1,0 +1,21 @@
+import java.io.*;
+
+public class CSVWriting {
+
+    public static void main(String[] args) throws IOException{
+
+        BufferedWriter writer = new BufferedWriter(new FileWriter("csvtest.csv"));
+        
+        for(int i=0; i < 10; i++){
+            String line = "Hello World!;NewOtherThings";
+            try {
+                writer.write(line + "\n");
+                writer.append("New line\n");
+            }
+            catch (Exception e){ return;}
+        }
+        writer.close();
+
+    }
+    
+}
