@@ -4,7 +4,7 @@ import java.util.*;
 public class CSVReading {
     public static void main(String[] args){
 
-        String file = "dataset.csv";
+        String file = "test.csv";
         BufferedReader reader = null;
         String line = "";
 
