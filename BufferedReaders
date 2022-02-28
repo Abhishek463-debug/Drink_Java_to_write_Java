@@ -1,0 +1,29 @@
+import java.io.*;
+import java.util.*;
+
+public class CSVReading {
+    public static void main(String[] args){
+
+        String file = "dataset.csv";
+        BufferedReader reader = null;
+        String line = "";
+
+        try {
+            reader = new BufferedReader(new FileReader(file));
+            while((line = reader.readLine()) != null){
+                String[] vals = line.split(";");
+                for(String s: vals){
+                    System.out.print(s + " ");
+                }
+                System.out.println();
+            } }
+            catch (Exception e) {
+                e.printStackTrace();
+
+            }
+            finally {
+                try {reader.close();}
+                catch (Exception e) { e.printStackTrace();}
+            }
+        }
+    }
