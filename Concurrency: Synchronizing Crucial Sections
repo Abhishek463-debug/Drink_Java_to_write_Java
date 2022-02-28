@@ -1,0 +1,43 @@
+class Sync {
+    public void countdown(){
+        for(int i = 5; i > 0; i--){
+            try {
+                Thread.sleep(1000);
+                System.out.println("Counting down:  " + i);
+            }
+            catch (Exception e){
+                System.out.println("There was an interruptiong when we tried to run this thread!!");
+            }
+        }
+        System.out.println("Yay, Synchronized countdown is working :D");
+    }
+}
+
+class Sender extends Thread {
+
+    Sync sender;
+
+    Sender(Sync sender){
+        this.sender = sender;
+    }
+    @Override
+    public void run(){
+        synchronized(this.sender){
+            this.sender.countdown();
+        }
+    }
+}
+
+public class Synchronization {
+
+    public static void main(String[] args){
+
+        Sync syncsend = new Sync();
+        Sender sender1 = new Sender(syncsend);
+        Sender sender2 = new Sender(syncsend);
+
+        sender1.start();
+        sender2.start();
+    }
+    
+}
