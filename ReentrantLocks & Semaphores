@@ -1,0 +1,36 @@
+import java.util.concurrent.Semaphore;
+import java.util.concurrent.locks.*;
+import java.util.*;
+import java.util.concurrent.*;
+
+
+public class Locks {
+
+    public static void main(String[] args) throws InterruptedException{
+
+        Lock lock = new ReentrantLock();
+
+        Semaphore semaphore = new Semaphore(3);
+
+        semaphore.acquire(3);
+        
+        //Create and use multiple threads here.
+
+        lock.lock();
+        lock.lock();
+        lock.lock();
+        lock.unlock();
+        lock.unlock();
+        lock.unlock();
+        //Reentrant lock useful to call lock on shared resource without releasing the previous acquisition.
+
+        semaphore.release(3);
+
+        //Semaphore good to call a certain number of threads ( > 1) to be active at the same time on a shared resource.
+
+
+
+
+    }
+    
+}
