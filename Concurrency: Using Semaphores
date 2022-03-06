@@ -1,0 +1,58 @@
+import java.util.concurrent.*;
+
+class SharedResource {
+    static int number = 0;
+}
+
+
+class SemThread extends Thread {
+    Semaphore sem;
+    String name;
+    public SemThread(Semaphore sem, String name){
+        this.sem = sem;
+        this.name =name;
+    }
+    @Override
+    public void run() {
+            try {
+                System.out.println(this.name + " is waiting for a permit.");
+                sem.acquire();
+
+                System.out.println(this.name +  " acquired a permit.");
+
+                for(int i=0; i < 5; i++){
+                    SharedResource.number++;
+                    System.out.println(this.name + " : " + SharedResource.number);
+                    Thread.sleep(1000);
+                }
+            } catch (InterruptedException e) {
+                
+                e.printStackTrace();
+            }
+            System.out.println(this.getName()+ " releases the permit!");
+            sem.release();
+        }
+        }
+
+
+public class Semaphores {
+
+    public static void main(String[] args) throws InterruptedException{
+
+        Semaphore semaphore = new Semaphore(1);
+
+        SemThread thread1 = new SemThread(semaphore, "ABC");
+        SemThread thread2 = new SemThread(semaphore, "XYZ");
+
+        thread1.start();
+        thread2.start();
+
+        thread1.join();
+        thread2.join();
+
+        System.out.println(SharedResource.number);
+
+        //Here semaphore acts like a lock, cause it's locking only one thread at a time. (using synchronized keyword)
+    }
+
+}
